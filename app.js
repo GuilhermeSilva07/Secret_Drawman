@@ -11,10 +11,18 @@ function sortear(){
 
     for (let i = 0; i < quantidade; i++){      //Configurando para que o numero seja gerado quantas vezes foram passadas no front
         numero = obterNumeroAleatorio(de,ate);
+
+        while(sorteados.includes(numero)) //verifica se o numero já foi sorteado para evitar duplicados 
+        {
+            numero = obterNumeroAleatorio(de,ate);
+        }
+
+
         sorteados.push(numero);
     }
     
-    alert(sorteados);
+    let resultado = document.getElementById('resultado');
+    resultado.innerHTML = `<label class="texto__paragrafo">Números sorteados: ${sorteados}</label>`  //Configuração para exibir a quantidade de numeros no front
 }
 
 function obterNumeroAleatorio(min, max){
